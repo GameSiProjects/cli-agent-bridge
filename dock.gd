@@ -22,10 +22,10 @@ var editor_plugin: EditorPlugin
 @onready var opt_effort: OptionButton = $VBox/TopBar/OptEffort
 @onready var btn_quota: Button = $VBox/TopBar/BtnQuota
 
-@onready var btn_explain: Button = $VBox/TopBar/BtnExplain
-@onready var btn_review: Button = $VBox/TopBar/BtnReview
-@onready var btn_bugs: Button = $VBox/TopBar/BtnBugs
-@onready var btn_test: Button = $VBox/TopBar/BtnTest
+@onready var btn_explain: Button = get_node_or_null("VBox/ContextBar/BtnExplain") if has_node("VBox/ContextBar/BtnExplain") else get_node_or_null("VBox/TopBar/BtnExplain")
+@onready var btn_review: Button = get_node_or_null("VBox/ContextBar/BtnReview") if has_node("VBox/ContextBar/BtnReview") else get_node_or_null("VBox/TopBar/BtnReview")
+@onready var btn_bugs: Button = get_node_or_null("VBox/ContextBar/BtnBugs") if has_node("VBox/ContextBar/BtnBugs") else get_node_or_null("VBox/TopBar/BtnBugs")
+@onready var btn_test: Button = get_node_or_null("VBox/ContextBar/BtnTest") if has_node("VBox/ContextBar/BtnTest") else get_node_or_null("VBox/TopBar/BtnTest")
 
 @onready var btn_copy_output: Button = $VBox/TopBar/BtnCopyOutput
 @onready var btn_clear_output: Button = $VBox/TopBar/BtnClearOutput
