@@ -1,0 +1,286 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1g0q28k1yfx"]
+
+[ext_resource type="Script" path="res://addons/cli_agent_bridge/dock.gd" id="1_dock"]
+
+[node name="AgentDock" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dock")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TopBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BtnNewChat" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Start a fresh conversation session"
+text = "🔄 New Chat"
+
+[node name="ChkContinue" type="CheckBox" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Continue Session (-c): Maintain conversation history across prompts"
+text = "Continue"
+
+[node name="BtnHistory" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Browse past conversation history & sessions"
+text = "📜 History"
+
+[node name="Sep1" type="VSeparator" parent="VBox/TopBar"]
+layout_mode = 2
+
+[node name="LblAgent" type="Label" parent="VBox/TopBar"]
+layout_mode = 2
+text = "Agent:"
+
+[node name="OptAgent" type="OptionButton" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Select CLI agent provider"
+
+[node name="SepAgent" type="VSeparator" parent="VBox/TopBar"]
+layout_mode = 2
+
+[node name="LblModel" type="Label" parent="VBox/TopBar"]
+layout_mode = 2
+text = "Model:"
+
+[node name="OptModel" type="OptionButton" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Select agent model"
+
+[node name="LblEffort" type="Label" parent="VBox/TopBar"]
+layout_mode = 2
+text = "Effort:"
+
+[node name="OptEffort" type="OptionButton" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Set agent reasoning effort"
+
+[node name="BtnQuota" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Remaining quota for selected model (Click to refresh)"
+focus_mode = 0
+flat = true
+text = "⚡ --%"
+
+[node name="Sep2" type="VSeparator" parent="VBox/TopBar"]
+layout_mode = 2
+
+[node name="BtnExplain" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Explain Scene: Analyze hierarchy, purpose, and selected nodes"
+flat = true
+text = "🔍 Explain"
+
+[node name="BtnReview" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Review Script: Review active script against conventions and best practices"
+flat = true
+text = "📝 Review"
+
+[node name="BtnBugs" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Find Bugs: Inspect for missing null checks, broken NodePaths, and edge cases"
+flat = true
+text = "🐛 Bugs"
+
+[node name="BtnTest" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Generate Test: Create automated test script under tests/"
+flat = true
+text = "🧪 Test"
+
+[node name="BtnInstallAgy" type="Button" parent="VBox/TopBar"]
+visible = false
+layout_mode = 2
+tooltip_text = "Download and install Antigravity CLI (agy) automatically"
+text = "⬇️ Install agy"
+
+[node name="TopSpacer" type="Control" parent="VBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnCopyOutput" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Copy conversation log to clipboard"
+flat = true
+text = "📋 Copy"
+
+[node name="BtnClearOutput" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Clear conversation log"
+flat = true
+text = "🗑️ Clear"
+
+[node name="BtnSettingsToggle" type="Button" parent="VBox/TopBar"]
+layout_mode = 2
+tooltip_text = "Toggle Settings / CLI Path"
+flat = true
+text = "⚙️"
+
+[node name="BodySplit" type="HSplitContainer" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 260
+
+[node name="HistoryDrawer" type="VBoxContainer" parent="VBox/BodySplit"]
+visible = false
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HistoryHeader" type="HBoxContainer" parent="VBox/BodySplit/HistoryDrawer"]
+layout_mode = 2
+
+[node name="LblHistory" type="Label" parent="VBox/BodySplit/HistoryDrawer/HistoryHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "📜 Past Sessions"
+
+[node name="BtnOpenHistoryFolder" type="Button" parent="VBox/BodySplit/HistoryDrawer/HistoryHeader"]
+layout_mode = 2
+tooltip_text = "Open history folder in file manager"
+flat = true
+text = "📁"
+
+[node name="BtnRefreshHistory" type="Button" parent="VBox/BodySplit/HistoryDrawer/HistoryHeader"]
+layout_mode = 2
+tooltip_text = "Refresh conversation history"
+flat = true
+text = "🔄"
+
+[node name="BtnCloseHistory" type="Button" parent="VBox/BodySplit/HistoryDrawer/HistoryHeader"]
+layout_mode = 2
+tooltip_text = "Close history drawer"
+flat = true
+text = "✕"
+
+[node name="HistorySearch" type="LineEdit" parent="VBox/BodySplit/HistoryDrawer"]
+layout_mode = 2
+placeholder_text = "Filter sessions..."
+clear_button_enabled = true
+
+[node name="HistoryList" type="ItemList" parent="VBox/BodySplit/HistoryDrawer"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="HistoryActions" type="HBoxContainer" parent="VBox/BodySplit/HistoryDrawer"]
+layout_mode = 2
+
+[node name="BtnResumeSession" type="Button" parent="VBox/BodySplit/HistoryDrawer/HistoryActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "▶️ Resume Session"
+
+[node name="ChatArea" type="VBoxContainer" parent="VBox/BodySplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 2
+
+[node name="HistoryBanner" type="HBoxContainer" parent="VBox/BodySplit/ChatArea"]
+visible = false
+layout_mode = 2
+
+[node name="LblHistoryBanner" type="Label" parent="VBox/BodySplit/ChatArea/HistoryBanner"]
+layout_mode = 2
+size_flags_horizontal = 3
+text_overrun_behavior = 3
+text = "Viewing past session"
+
+[node name="BtnBackToActiveChat" type="Button" parent="VBox/BodySplit/ChatArea/HistoryBanner"]
+layout_mode = 2
+flat = true
+text = "⬅️ Back to Active Chat"
+
+[node name="OutputLog" type="RichTextLabel" parent="VBox/BodySplit/ChatArea"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
+text = ""
+
+[node name="ContextBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LblContext" type="Label" parent="VBox/ContextBar"]
+layout_mode = 2
+text = "Context:"
+
+[node name="ChkScene" type="CheckBox" parent="VBox/ContextBar"]
+layout_mode = 2
+button_pressed = true
+text = "Scene: (none)"
+
+[node name="ChkScript" type="CheckBox" parent="VBox/ContextBar"]
+layout_mode = 2
+button_pressed = true
+text = "Script: (none)"
+
+[node name="ChkNodes" type="CheckBox" parent="VBox/ContextBar"]
+layout_mode = 2
+button_pressed = true
+text = "Nodes: (none)"
+
+[node name="StatusLabel" type="Label" parent="VBox/ContextBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 2
+text_overrun_behavior = 3
+text = ""
+
+[node name="PromptContainer" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PromptEdit" type="TextEdit" parent="VBox/PromptContainer"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Ask agent... (Ctrl+Enter to send)"
+wrap_mode = 1
+
+[node name="SendButton" type="Button" parent="VBox/PromptContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+tooltip_text = "Send prompt to CLI agent (Ctrl+Enter)"
+text = "🚀 Send"
+
+[node name="Settings" type="HBoxContainer" parent="VBox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LblPath" type="Label" parent="VBox/Settings"]
+layout_mode = 2
+text = "CLI Command / Path:"
+
+[node name="PathEdit" type="LineEdit" parent="VBox/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Executable command or full path"
+
+[node name="BtnRefreshModels" type="Button" parent="VBox/Settings"]
+layout_mode = 2
+tooltip_text = "Reload available models and reasoning effort"
+text = "🔄 Refresh Models"
+
+[node name="StatusTimer" type="Timer" parent="."]
+one_shot = true
