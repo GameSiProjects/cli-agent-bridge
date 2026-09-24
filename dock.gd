@@ -7,55 +7,55 @@ const GenericCliAgent = preload("res://addons/cli_agent_bridge/generic_agent.gd"
 
 var editor_plugin: EditorPlugin
 
-@onready var btn_new_chat: Button = $VBox/TopBar/BtnNewChat
-@onready var chk_continue: CheckBox = $VBox/TopBar/ChkContinue
-@onready var btn_history: Button = $VBox/TopBar/BtnHistory
-@onready var sep_1: VSeparator = $VBox/TopBar/Sep1
-@onready var lbl_agent: Label = $VBox/TopBar/LblAgent
-@onready var opt_agent: OptionButton = $VBox/TopBar/OptAgent
-@onready var sep_agent: VSeparator = $VBox/TopBar/SepAgent
-@onready var btn_install: Button = $VBox/TopBar/BtnInstallAgy
+@onready var btn_new_chat: Button = %BtnNewChat
+@onready var chk_continue: CheckBox = %ChkContinue
+@onready var btn_history: Button = %BtnHistory
+@onready var sep_1: VSeparator = %Sep1
+@onready var lbl_agent: Label = %LblAgent
+@onready var opt_agent: OptionButton = %OptAgent
+@onready var sep_agent: VSeparator = %SepAgent
+@onready var btn_install: Button = %BtnInstallAgy
 
-@onready var lbl_model: Label = $VBox/TopBar/LblModel
-@onready var opt_model: OptionButton = $VBox/TopBar/OptModel
-@onready var lbl_effort: Label = $VBox/TopBar/LblEffort
-@onready var opt_effort: OptionButton = $VBox/TopBar/OptEffort
-@onready var btn_quota: Button = $VBox/TopBar/BtnQuota
+@onready var lbl_model: Label = %LblModel
+@onready var opt_model: OptionButton = %OptModel
+@onready var lbl_effort: Label = %LblEffort
+@onready var opt_effort: OptionButton = %OptEffort
+@onready var btn_quota: Button = %BtnQuota
 
-@onready var btn_explain: Button = get_node_or_null("VBox/ContextBar/BtnExplain") if has_node("VBox/ContextBar/BtnExplain") else get_node_or_null("VBox/TopBar/BtnExplain")
-@onready var btn_review: Button = get_node_or_null("VBox/ContextBar/BtnReview") if has_node("VBox/ContextBar/BtnReview") else get_node_or_null("VBox/TopBar/BtnReview")
-@onready var btn_bugs: Button = get_node_or_null("VBox/ContextBar/BtnBugs") if has_node("VBox/ContextBar/BtnBugs") else get_node_or_null("VBox/TopBar/BtnBugs")
-@onready var btn_test: Button = get_node_or_null("VBox/ContextBar/BtnTest") if has_node("VBox/ContextBar/BtnTest") else get_node_or_null("VBox/TopBar/BtnTest")
+@onready var btn_explain: Button = %BtnExplain
+@onready var btn_review: Button = %BtnReview
+@onready var btn_bugs: Button = %BtnBugs
+@onready var btn_test: Button = %BtnTest
 
-@onready var btn_copy_output: Button = $VBox/TopBar/BtnCopyOutput
-@onready var btn_clear_output: Button = $VBox/TopBar/BtnClearOutput
-@onready var btn_settings_toggle: Button = $VBox/TopBar/BtnSettingsToggle
+@onready var btn_copy_output: Button = %BtnCopyOutput
+@onready var btn_clear_output: Button = %BtnClearOutput
+@onready var btn_settings_toggle: Button = %BtnSettingsToggle
 
-@onready var history_drawer: VBoxContainer = $VBox/BodySplit/HistoryDrawer
-@onready var btn_open_history_folder: Button = $VBox/BodySplit/HistoryDrawer/HistoryHeader/BtnOpenHistoryFolder
-@onready var btn_refresh_history: Button = $VBox/BodySplit/HistoryDrawer/HistoryHeader/BtnRefreshHistory
-@onready var btn_close_history: Button = $VBox/BodySplit/HistoryDrawer/HistoryHeader/BtnCloseHistory
-@onready var history_search: LineEdit = $VBox/BodySplit/HistoryDrawer/HistorySearch
-@onready var history_list: ItemList = $VBox/BodySplit/HistoryDrawer/HistoryList
-@onready var btn_resume_session: Button = $VBox/BodySplit/HistoryDrawer/HistoryActions/BtnResumeSession
+@onready var history_drawer: VBoxContainer = %HistoryDrawer
+@onready var btn_open_history_folder: Button = %BtnOpenHistoryFolder
+@onready var btn_refresh_history: Button = %BtnRefreshHistory
+@onready var btn_close_history: Button = %BtnCloseHistory
+@onready var history_search: LineEdit = %HistorySearch
+@onready var history_list: ItemList = %HistoryList
+@onready var btn_resume_session: Button = %BtnResumeSession
 
-@onready var history_banner: HBoxContainer = $VBox/BodySplit/ChatArea/HistoryBanner
-@onready var lbl_history_banner: Label = $VBox/BodySplit/ChatArea/HistoryBanner/LblHistoryBanner
-@onready var btn_back_to_active_chat: Button = $VBox/BodySplit/ChatArea/HistoryBanner/BtnBackToActiveChat
-@onready var output_log: RichTextLabel = $VBox/BodySplit/ChatArea/OutputLog
+@onready var history_banner: HBoxContainer = %HistoryBanner
+@onready var lbl_history_banner: Label = %LblHistoryBanner
+@onready var btn_back_to_active_chat: Button = %BtnBackToActiveChat
+@onready var output_log: RichTextLabel = %OutputLog
 
-@onready var chk_scene: CheckBox = $VBox/ContextBar/ChkScene
-@onready var chk_script: CheckBox = $VBox/ContextBar/ChkScript
-@onready var chk_nodes: CheckBox = $VBox/ContextBar/ChkNodes
-@onready var status_label: Label = $VBox/ContextBar/StatusLabel
+@onready var chk_scene: CheckBox = %ChkScene
+@onready var chk_script: CheckBox = %ChkScript
+@onready var chk_nodes: CheckBox = %ChkNodes
+@onready var status_label: Label = %StatusLabel
 
-@onready var prompt_edit: TextEdit = $VBox/PromptContainer/PromptEdit
-@onready var send_button: Button = $VBox/PromptContainer/SendButton
+@onready var prompt_edit: TextEdit = %PromptEdit
+@onready var send_button: Button = %SendButton
 
-@onready var settings_box: HBoxContainer = $VBox/Settings
-@onready var path_edit: LineEdit = $VBox/Settings/PathEdit
-@onready var btn_refresh_models: Button = $VBox/Settings/BtnRefreshModels
-@onready var status_timer: Timer = $StatusTimer
+@onready var settings_box: HBoxContainer = %Settings
+@onready var path_edit: LineEdit = %PathEdit
+@onready var btn_refresh_models: Button = %BtnRefreshModels
+@onready var status_timer: Timer = %StatusTimer
 
 const CONFIG_FILE_PATH = "user://cli_agent_bridge.cfg"
 const LEGACY_CONFIG_FILE_PATH = "user://agent_bridge.cfg"
@@ -97,7 +97,6 @@ func _ready() -> void:
 		status_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 
 	_register_default_agents()
-	_connect_signals()
 	_load_config()
 	_update_context_previews()
 
@@ -109,60 +108,6 @@ func _exit_tree() -> void:
 	if quota_thread and quota_thread.is_started():
 		quota_thread.wait_to_finish()
 		quota_thread = null
-
-func _connect_signals() -> void:
-	if btn_new_chat and not btn_new_chat.pressed.is_connected(_on_new_chat_pressed):
-		btn_new_chat.pressed.connect(_on_new_chat_pressed)
-	if opt_agent and not opt_agent.item_selected.is_connected(_on_agent_selected):
-		opt_agent.item_selected.connect(_on_agent_selected)
-	if btn_install and not btn_install.pressed.is_connected(_on_install_pressed):
-		btn_install.pressed.connect(_on_install_pressed)
-	if opt_model and not opt_model.item_selected.is_connected(_on_model_selected):
-		opt_model.item_selected.connect(_on_model_selected)
-	if opt_effort and not opt_effort.item_selected.is_connected(_on_effort_selected):
-		opt_effort.item_selected.connect(_on_effort_selected)
-	if btn_quota and not btn_quota.pressed.is_connected(_on_quota_pressed):
-		btn_quota.pressed.connect(_on_quota_pressed)
-	if btn_refresh_models and not btn_refresh_models.pressed.is_connected(_on_refresh_models_pressed):
-		btn_refresh_models.pressed.connect(_on_refresh_models_pressed)
-	if send_button and not send_button.pressed.is_connected(_on_send_pressed):
-		send_button.pressed.connect(_on_send_pressed)
-	if btn_explain and not btn_explain.pressed.is_connected(_on_preset_explain):
-		btn_explain.pressed.connect(_on_preset_explain)
-	if btn_review and not btn_review.pressed.is_connected(_on_preset_review):
-		btn_review.pressed.connect(_on_preset_review)
-	if btn_bugs and not btn_bugs.pressed.is_connected(_on_preset_bugs):
-		btn_bugs.pressed.connect(_on_preset_bugs)
-	if btn_test and not btn_test.pressed.is_connected(_on_preset_test):
-		btn_test.pressed.connect(_on_preset_test)
-	if btn_clear_output and not btn_clear_output.pressed.is_connected(_on_clear_output):
-		btn_clear_output.pressed.connect(_on_clear_output)
-	if btn_copy_output and not btn_copy_output.pressed.is_connected(_on_copy_output):
-		btn_copy_output.pressed.connect(_on_copy_output)
-	if btn_settings_toggle and not btn_settings_toggle.pressed.is_connected(_on_settings_toggle_pressed):
-		btn_settings_toggle.pressed.connect(_on_settings_toggle_pressed)
-	if prompt_edit and not prompt_edit.gui_input.is_connected(_on_prompt_gui_input):
-		prompt_edit.gui_input.connect(_on_prompt_gui_input)
-	if status_timer and not status_timer.timeout.is_connected(_on_status_timeout):
-		status_timer.timeout.connect(_on_status_timeout)
-	if path_edit and not path_edit.text_changed.is_connected(_on_path_changed):
-		path_edit.text_changed.connect(_on_path_changed)
-	if btn_history and not btn_history.pressed.is_connected(_on_history_toggle_pressed):
-		btn_history.pressed.connect(_on_history_toggle_pressed)
-	if btn_open_history_folder and not btn_open_history_folder.pressed.is_connected(_on_open_history_folder_pressed):
-		btn_open_history_folder.pressed.connect(_on_open_history_folder_pressed)
-	if btn_refresh_history and not btn_refresh_history.pressed.is_connected(_on_refresh_history_pressed):
-		btn_refresh_history.pressed.connect(_on_refresh_history_pressed)
-	if btn_close_history and not btn_close_history.pressed.is_connected(_on_close_history_pressed):
-		btn_close_history.pressed.connect(_on_close_history_pressed)
-	if history_search and not history_search.text_changed.is_connected(_on_history_search_changed):
-		history_search.text_changed.connect(_on_history_search_changed)
-	if history_list and not history_list.item_selected.is_connected(_on_history_item_selected):
-		history_list.item_selected.connect(_on_history_item_selected)
-	if btn_resume_session and not btn_resume_session.pressed.is_connected(_on_resume_session_pressed):
-		btn_resume_session.pressed.connect(_on_resume_session_pressed)
-	if btn_back_to_active_chat and not btn_back_to_active_chat.pressed.is_connected(_on_back_to_active_chat_pressed):
-		btn_back_to_active_chat.pressed.connect(_on_back_to_active_chat_pressed)
 
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
