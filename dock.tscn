@@ -48,11 +48,13 @@ theme_override_font_sizes/font_size = 14
 text = "Agent:"
 
 [node name="OptAgent" type="OptionButton" parent="VBox/TopBar" unique_id=1861773626]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 tooltip_text = "Select CLI agent provider"
 theme_override_font_sizes/font_size = 14
 clip_text = true
 selected = 0
+fit_to_longest_item = false
 item_count = 2
 popup/item_0/text = "Antigravity (agy)"
 popup/item_0/id = 0
@@ -68,11 +70,13 @@ theme_override_font_sizes/font_size = 14
 text = "Model:"
 
 [node name="OptModel" type="OptionButton" parent="VBox/TopBar" unique_id=2008658217]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 tooltip_text = "Current model: Gemini 3.8 Flash"
 theme_override_font_sizes/font_size = 14
 clip_text = true
 selected = 0
+fit_to_longest_item = false
 item_count = 8
 popup/item_0/text = "Gemini 3.8 Flash"
 popup/item_0/id = 0
@@ -97,11 +101,13 @@ theme_override_font_sizes/font_size = 14
 text = "Effort:"
 
 [node name="OptEffort" type="OptionButton" parent="VBox/TopBar" unique_id=1186797652]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Reasoning effort: Medium"
 theme_override_font_sizes/font_size = 14
 clip_text = true
 selected = 1
+fit_to_longest_item = false
 item_count = 3
 popup/item_0/text = "High"
 popup/item_0/id = 0
@@ -114,8 +120,8 @@ popup/item_2/id = 2
 modulate = Color(0.4, 0.9, 0.4, 1)
 layout_mode = 2
 tooltip_text = "Gemini Models Quota:
-• 5-Hour Limit Remaining: 89% (Resets: 11:49 (in 4h 30m))
-• Weekly Limit Remaining: 76% (Resets: 04:43 (in 5d 21h))
+• 5-Hour Limit Remaining: 89% (Resets: 11:49 (in 4h 19m))
+• Weekly Limit Remaining: 77% (Resets: 04:43 (in 5d 21h))
 
 Click to refresh quota"
 focus_mode = 0
@@ -130,22 +136,18 @@ tooltip_text = "Download and install Antigravity CLI (agy) automatically"
 theme_override_font_sizes/font_size = 14
 text = "⬇️ Install agy"
 
-[node name="TopSpacer" type="Control" parent="VBox/TopBar" unique_id=1356534961]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="BtnCopyOutput" type="Button" parent="VBox/TopBar" unique_id=2058789114]
 layout_mode = 2
 tooltip_text = "Copy conversation log to clipboard"
-theme_override_font_sizes/font_size = 14
-text = "📋 Copy"
+theme_override_font_sizes/font_size = 12
+text = "📋"
 flat = true
 
 [node name="BtnClearOutput" type="Button" parent="VBox/TopBar" unique_id=245654064]
 layout_mode = 2
 tooltip_text = "Clear conversation log"
 theme_override_font_sizes/font_size = 14
-text = "🗑️ Clear"
+text = "🗑️"
 flat = true
 
 [node name="BtnSettingsToggle" type="Button" parent="VBox/TopBar" unique_id=1339030834]
@@ -262,21 +264,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 14
 button_pressed = true
 text = "Scene: (none)"
-clip_text = true
 
 [node name="ChkScript" type="CheckBox" parent="VBox/ContextBar" unique_id=1815132838]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 button_pressed = true
 text = "Script: (none)"
-clip_text = true
 
 [node name="ChkNodes" type="CheckBox" parent="VBox/ContextBar" unique_id=720317911]
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 button_pressed = true
 text = "Nodes: (none)"
-clip_text = true
 
 [node name="SepContext" type="VSeparator" parent="VBox/ContextBar" unique_id=636986223]
 layout_mode = 2
@@ -313,7 +312,7 @@ flat = true
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 14
 text = "Ready (Antigravity found)"
 horizontal_alignment = 2
 text_overrun_behavior = 3
